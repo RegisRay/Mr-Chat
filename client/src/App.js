@@ -3,10 +3,14 @@ import io from 'socket.io-client';
 import {useState} from "react";
 import Chat from "./Chat";
 
-const socket=io.connect("http://localhost:3001");
+const backend_address="http://localhost:3001";
+
+
+const socket=io.connect(backend_address);
 
 function App() {
-    console.log("Chumma")
+
+    const frontend_address="http://localhost:3000";
     const [username, setUsername]=useState("");
     const [room, setRoom]=useState("");
     const [showChat, setShowChat]=useState(false);
