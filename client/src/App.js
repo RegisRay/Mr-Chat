@@ -24,7 +24,7 @@ function App() {
     <div className="">
       {!showChat ? (
         <div className="joinChatContainer">
-          <h3 className="header">Join A Chat</h3>
+          <h3 className="header">Join a Chat Room</h3>
           <input
             type="text"
             placeholder="Name"
@@ -42,7 +42,7 @@ function App() {
               event.key === "Enter" && joinRoom();
             }}
           />
-          <button onClick={joinRoom}>Join A Room</button>
+          <button onClick={joinRoom}>Join</button>
         </div>
       ) : (
         <Chat socket={socket} username={username} room={room} />
