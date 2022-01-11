@@ -21,7 +21,7 @@ function App() {
   };
 
   return (
-    <div className="">
+    <div className="App">
       {!showChat ? (
         <div className="joinChatContainer">
           <h3 className="header">Join a Chat Room</h3>
