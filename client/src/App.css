@@ -18,6 +18,14 @@
   background-color: #a8bbbf;
 }
 
+.App {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .header {
   color: #fff;
 }
@@ -40,6 +48,7 @@
   border: 2px solid #43a047;
   border-radius: 5px;
   padding: 1.5%;
+  outline: none;
 }
 
 .joinChatContainer button {
@@ -58,27 +67,30 @@
 
 .chat-window {
   background-color: #36393f;
-  width: 300px;
-  height: 400px;
-  border: 2px solid black;
+  width: 320px;
+  height: 450px;
+  border-radius: 10px;
 }
 
 .chat-window p {
   margin: 0;
 }
+
 .chat-window .chat-header {
-  background: #2f9dcf;
+  background: rgb(54, 177, 160);
+  border-radius: 10px 10px 0px 0px;
 }
+
 .chat-window .chat-header p {
   display: block;
   padding: 0 1em 0 2em;
   color: #fff;
-  font-weight: 700;
   line-height: 45px;
 }
 
 .chat-body {
-  height: 310px;
+  height: 345px;
+  padding: 2%;
 }
 
 .chat-window .chat-body .message-container {
@@ -95,11 +107,11 @@
 .chat-window .chat-body .message .message-content {
   width: auto;
   height: auto;
-  min-height: 40px;
+  min-height: 30px;
   max-width: 120px;
-  background-color: #e4ebe5;
+  background-color: #232c39;
   border-radius: 5px;
-  color: black;
+  color: #fff;
   display: flex;
   align-items: center;
   margin-right: 5px;
@@ -116,10 +128,15 @@
 
 #sender .message-content {
   justify-content: flex-start;
+  padding: 2%;
 }
 
 #sender .message-meta {
   justify-content: flex-start;
+  margin-left: 2%;
+  margin-bottom: 2%;
+  color: #fff;
+  opacity: 0.5;
 }
 
 #receiver {
@@ -149,35 +166,28 @@
 }
 
 .chat-window .chat-footer {
-  height: 40px;
+  height: 10%;
+  margin-left: 2%;
+  margin-right: 2%;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .chat-window .chat-footer input {
-  height: 90%;
-  flex: 85%;
+  height: 70%;
+  width: 78%;
   border: 0;
-  padding: 0 0.7em;
+  padding-left: 5%;
+  padding-right: 5%;
   border: 1px solid;
-  border-radius: 10px;
+  border-radius: 100px;
   outline: none;
-  background-image: linear-gradient(#d3cce3, #e9e4f0);
 }
 
 .chat-window .chat-footer button {
-  border: 0;
-  display: -ms-grid;
-  display: grid;
-  justify-items: center;
-  cursor: pointer;
-  flex: 15%;
-  height: 100%;
-  background: transparent;
-  outline: none;
-  font-size: 25px;
-  color: lightgray;
-}
-
-.chat-window .chat-footer button:hover {
-  color: #43a047;
+  border-radius: 50%;
+  padding: 2.5%;
+  width: 10.5%;
+  background-color: rgb(54, 177, 160);
 }
