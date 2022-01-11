@@ -84,8 +84,8 @@
 
 .chat-window .chat-header p {
   display: block;
-  padding: 0 1em 0 2em;
-  color: #fff;
+  margin-left: 5%;
+  color: #000;
   line-height: 45px;
 }
 
