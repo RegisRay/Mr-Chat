@@ -7,7 +7,7 @@ const backend_address = "https://mr-chat-server.herokuapp.com/";
 
 const socket = io.connect(backend_address);
 
-export default function Chat() {
+export default function Chat(props) {
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
   const [showChat, setShowChat] = useState(false);
@@ -54,13 +54,7 @@ export default function Chat() {
             placeholder="Name"
             onChange={(event) => {
               setUsername(event.target.value);
-            }}
-          />
-          <input
-            type="text"
-            placeholder="Room Key"
-            onChange={(event) => {
-              setRoom(event.target.value);
+              setRoom(props.roomKey);
             }}
             onKeyPress={(event) => {
               event.key === "Enter" && joinRoom();
