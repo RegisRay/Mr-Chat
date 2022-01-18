@@ -13,6 +13,7 @@ export default function Chat(props) {
   const [showChat, setShowChat] = useState(false);
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
+  const [popUp, setPopUp]=useState(false);
 
   const joinRoom = () => {
     if (username !== "" && room !== "") {
@@ -46,77 +47,81 @@ export default function Chat(props) {
 
   return (
     <>
-      {!showChat ? (
-        <div className="joinChatContainer">
-          <h3 className="joinChatHeader">Join a Chat Room</h3>
-          <input
-            type="text"
-            placeholder="Name"
-            onChange={(event) => {
-              setUsername(event.target.value);
-              setRoom(props.roomKey);
-            }}
-            onKeyPress={(event) => {
-              event.key === "Enter" && joinRoom();
-            }}
-          />
-          <button onClick={joinRoom}>Join</button>
-        </div>
-      ) : (
-        <div className="chat-window">
-          <div className="chat-header">
-            <p>
-              <span>Mr. Chat &nbsp;</span>
-              <i class="far fa-comments"></i>
-            </p>
+      {popUp ?
+          (!showChat ?
+              (
+          <div className="joinChatContainer">
+            <h3 className="joinChatHeader">Join a Chat Room</h3>
+            <input
+                type="text"
+                placeholder="Name"
+                onChange={(event) => {
+                  setUsername(event.target.value);
+                  setRoom(props.roomKey);
+                }}
+                onKeyPress={(event) => {
+                  event.key === "Enter" && joinRoom();
+                }}
+            />
+            <button onClick={joinRoom}>Join</button>
           </div>
-          <div className="chat-body">
-            <ScrollToBottom className="message-container">
-              {messageList.map((messageContent) => {
-                return (
-                  <div
-                    className="message"
-                    id={
-                      username === messageContent.author ? "sender" : "receiver"
-                    }
-                  >
-                    <div>
-                      <div className="message-content">
-                        <p className="">{messageContent.message}</p>
-                        <div className="message-meta">
-                          <p id="time">{messageContent.time}</p>
-                          <p id="author">{messageContent.author}</p>
+      ) : (
+          <div className="chat-window">
+            <div className="chat-header">
+              <p>
+                <span>Mr. Chat &nbsp;</span>
+                <i class="far fa-comments"></i>
+                <button onClick={()=>setPopUp(!popUp)}>X</button>
+              </p>
+            </div>
+            <div className="chat-body">
+              <ScrollToBottom className="message-container">
+                {messageList.map((messageContent) => {
+                  return (
+                      <div
+                          className="message"
+                          id={
+                            username === messageContent.author ? "sender" : "receiver"
+                          }
+                      >
+                        <div>
+                          <div className="message-content">
+                            <p className="">{messageContent.message}</p>
+                            <div className="message-meta">
+                              <p id="time">{messageContent.time}</p>
+                              <p id="author">{messageContent.author}</p>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </ScrollToBottom>
-          </div>
-          <div className="chat-footer">
-            <input
-              type="text"
-              value={currentMessage}
-              placeholder="Type a message"
-              onChange={(event) => {
-                setCurrentMessage(event.target.value);
-              }}
-              onKeyPress={(event) => {
-                event.key === "Enter" && sendMessage();
-              }}
-            />
-            <button onClick={sendMessage} class="chatBtn" type="button">
-              <img
-                className="send-img"
-                alt="send"
-                src="https://mr-hoster.herokuapp.com/images/sendIcon.svg"
-                width="15px"
+                  );
+                })}
+              </ScrollToBottom>
+            </div>
+            <div className="chat-footer">
+              <input
+                  type="text"
+                  value={currentMessage}
+                  placeholder="Type a message"
+                  onChange={(event) => {
+                    setCurrentMessage(event.target.value);
+                  }}
+                  onKeyPress={(event) => {
+                    event.key === "Enter" && sendMessage();
+                  }}
               />
-            </button>
+              <button onClick={sendMessage} class="chatBtn" type="button">
+                <img
+                    className="send-img"
+                    alt="send"
+                    src="https://mr-hoster.herokuapp.com/images/sendIcon.svg"
+                    width="15px"
+                />
+              </button>
+            </div>
           </div>
-        </div>
-      )}
+      )) : (<button onClick={()=>setPopUp(!popUp)}>Click Here</button>)  }
+
     </>
   );
 }
